@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"D:\\\\Work new\\\\webvoxel-hasni\\\\webvoxelstudio.uk/app/\\(public\\)\")",
+      "Bash(npx next build)",
+      "Bash(pandoc \"C:\\\\Users\\\\nawrif\\\\Downloads\\\\webvoxel_main_site_content_pack.docx\" -t markdown --wrap=none)",
+      "Bash(python -c \":*)",
+      "mcp__firecrawl__firecrawl_search",
+      "Bash(taskkill /f /im node.exe)",
+      "Bash(rm -rf .next)"
+    ]
+  }
+}

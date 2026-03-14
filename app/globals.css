@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@source "../components";
+@source "../app";
+@source "../lib";
+
+@theme {
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F8FAFB;
+  --color-bg-elevated: #F1F5F9;
+  --color-bg-light: #FFFFFF;
+  --color-bg-dark: #0B1120;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+  --color-text-dark: #0F172A;
+  --color-accent: #059669;
+  --color-accent-hover: #10B981;
+  --color-border: #E2E8F0;
+  --color-border-light: #CBD5E1;
+
+  --font-sans: var(--font-inter, ui-sans-serif, system-ui, sans-serif);
+  --font-display: var(--font-display, ui-serif, Georgia, serif);
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto !important;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary font-sans antialiased selection:bg-accent selection:text-white;
+    width: 100%;
+    overscroll-behavior: none;
+  }
+
+  /* Paint containment + content-visibility — lets browser skip layout/paint for off-screen sections */
+  section {
+    contain: layout style paint;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+
+  /* Stable compositing for fixed header — will-change removed to save mobile GPU memory */
+  header {
+    backface-visibility: hidden;
+  }
+
+  /* Sub-pixel stability for images during transforms */
+  img,
+  video {
+    backface-visibility: hidden;
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  scrollbar-width: none;
+  /* stylelint-disable-line property-no-unknown */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
