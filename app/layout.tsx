@@ -12,10 +12,26 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     template: '%s | WebVoxel Studio',
-    default: 'AI Solutions & Custom Software for Businesses | WebVoxel Studio',
+    default: 'AI Systems & Custom Software for UK Businesses | WebVoxel Studio',
   },
-  description: 'AI-powered systems and custom software for businesses and operational teams. We help you respond faster, reduce manual work, and build smarter workflows.',
+  description: 'We build AI receptionists, custom dashboards, and automation for UK businesses. Stop losing leads, cut admin time, and get software that fits how your team works.',
   metadataBase: new URL('https://webvoxelstudio.uk'),
+  openGraph: {
+    type: 'website',
+    locale: 'en_GB',
+    siteName: 'WebVoxel Studio',
+    title: 'AI Systems & Custom Software for UK Businesses | WebVoxel Studio',
+    description: 'We build AI receptionists, custom dashboards, and automation for UK businesses. Stop losing leads, cut admin time, and get software that fits how your team works.',
+    url: 'https://webvoxelstudio.uk',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Systems & Custom Software for UK Businesses | WebVoxel Studio',
+    description: 'We build AI receptionists, custom dashboards, and automation for UK businesses. Stop losing leads, cut admin time, and get software that fits.',
+  },
+  alternates: {
+    canonical: 'https://webvoxelstudio.uk',
+  },
 }
 
 export default function RootLayout({

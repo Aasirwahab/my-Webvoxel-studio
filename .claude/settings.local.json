@@ -8,7 +8,8 @@
       "mcp__firecrawl__firecrawl_search",
       "Bash(taskkill /f /im node.exe)",
       "Bash(rm -rf .next)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(grep -E \"import.*three|import.*three-globe|import.*lenis|import.*framer-motion\" \"/d/Work final and last/webvoxelstudio.uk/components/sections\"/*.tsx)"
     ]
   }
 }

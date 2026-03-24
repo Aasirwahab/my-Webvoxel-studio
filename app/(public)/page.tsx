@@ -1,17 +1,20 @@
+import dynamic from 'next/dynamic'
 import Hero from '@/components/sections/Hero'
 import LogoBar from '@/components/sections/LogoBar'
 import WhatWeSolve from '@/components/sections/WhatWeSolve'
 import Services from '@/components/sections/Services'
-import WhoWeHelp from '@/components/sections/WhoWeHelp'
-import Outcomes from '@/components/sections/Outcomes'
-import FeaturedWork from '@/components/sections/FeaturedWork'
-import Stats from '@/components/sections/Stats'
-import Testimonials from '@/components/sections/Testimonials'
-import WhyWebVoxel from '@/components/sections/WhyWebVoxel'
-import WhatWeBuild from '@/components/sections/WhatWeBuild'
-import FAQ from '@/components/sections/FAQ'
-import CTA from '@/components/sections/CTA'
 import JsonLd, { localBusinessSchema, websiteSchema } from '@/components/seo/JsonLd'
+
+/* Below-fold sections — lazy loaded to reduce initial bundle */
+const WhoWeHelp = dynamic(() => import('@/components/sections/WhoWeHelp'))
+const Outcomes = dynamic(() => import('@/components/sections/Outcomes'))
+const FeaturedWork = dynamic(() => import('@/components/sections/FeaturedWork'))
+const Stats = dynamic(() => import('@/components/sections/Stats'))
+const Testimonials = dynamic(() => import('@/components/sections/Testimonials'))
+const WhyWebVoxel = dynamic(() => import('@/components/sections/WhyWebVoxel'))
+const WhatWeBuild = dynamic(() => import('@/components/sections/WhatWeBuild'))
+const FAQ = dynamic(() => import('@/components/sections/FAQ'))
+const CTA = dynamic(() => import('@/components/sections/CTA'))
 
 export default function Home() {
     return (

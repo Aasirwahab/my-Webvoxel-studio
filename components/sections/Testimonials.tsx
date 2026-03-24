@@ -73,7 +73,7 @@ export default function Testimonials() {
                         onMouseLeave={() => setIsHovered(false)}
                     >
                         {/* Quote content */}
-                        <div className="min-h-[400px] md:min-h-[300px] w-full flex items-center justify-center mb-12 px-4 md:px-12">
+                        <div className="h-[400px] md:h-[300px] w-full flex items-center justify-center mb-12 px-4 md:px-12">
                             <AnimatePresence mode="wait" custom={direction}>
                                 <motion.div
                                     key={currentIndex}
