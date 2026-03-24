@@ -10,9 +10,9 @@ import { useIsMobile } from '@/lib/useIsMobile'
 /* ── Word-by-word reveal ────────────────────────────────── */
 function AnimatedHeading() {
     const lines = [
-        { text: "AI Solutions & Custom Software", accent: false },
-        { text: "for Businesses and", accent: false },
-        { text: "Operational Teams", accent: true },
+        { text: "We build the systems", accent: false },
+        { text: "your business is", accent: false },
+        { text: "missing", accent: true },
     ]
 
     const lineVars = {
@@ -77,7 +77,7 @@ export default function Hero() {
                         animate="show"
                         custom={0.1}
                     >
-                        AI Solutions & Custom Software — UK
+                        AI Systems & Custom Software — UK
                     </motion.p>
 
                     <AnimatedHeading />
@@ -89,10 +89,10 @@ export default function Hero() {
                         animate="show"
                         custom={0.4}
                     >
-                        We build AI-powered systems that help businesses respond faster,
-                        reduce manual work, and run more efficiently. From lead handling
-                        and follow-up to internal tools and workflow automation, we build
-                        systems around how your business actually works.
+                        Leads going cold. Admin piling up. Follow-ups forgotten. We build
+                        AI receptionists, custom dashboards, and automation that fix the
+                        problems your team deals with every day — so they can focus on
+                        the work that actually grows your business.
                     </motion.p>
 
                     <motion.div
@@ -130,7 +130,7 @@ export default function Hero() {
                             ))}
                         </div>
                         <p className="text-sm text-text-muted leading-snug">
-                            Custom systems for businesses that need better operations, faster response times, and less manual work.
+                            Trusted by 25+ businesses across the UK to handle leads, cut admin, and build software that fits.
                         </p>
                     </motion.div>
                 </div>

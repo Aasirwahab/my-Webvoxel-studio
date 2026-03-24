@@ -7,7 +7,8 @@
       "Bash(python -c \":*)",
       "mcp__firecrawl__firecrawl_search",
       "Bash(taskkill /f /im node.exe)",
-      "Bash(rm -rf .next)"
+      "Bash(rm -rf .next)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

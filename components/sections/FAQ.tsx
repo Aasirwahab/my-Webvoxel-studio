@@ -7,6 +7,29 @@ import { api } from '@/convex/_generated/api'
 import RevealOnScroll from '../ui/RevealOnScroll'
 import { ChevronDown } from 'lucide-react'
 
+const containerVariants = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.1,
+        },
+    },
+}
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.98 },
+    show: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.16, 1, 0.3, 1] as const,
+        },
+    },
+}
+
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0)
     const faqs = useQuery(api.faqs.list) || []
@@ -17,18 +40,14 @@ export default function FAQ() {
 
     return (
         <section className="py-24 md:py-40 bg-bg-secondary relative overflow-hidden" id="faq">
-            {/* Subtle background vibe */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(5,150,105,0.04) 0%, transparent 70%)' }} />
+            {/* Subtle background pattern — matches other bg-secondary sections */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
             <div className="w-full max-w-[900px] mx-auto px-6 md:px-12 relative z-10">
                 <RevealOnScroll>
                     <div className="text-center mb-16 md:mb-24 space-y-4">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 border border-accent/10 text-accent text-xs font-semibold tracking-wider uppercase">
-                            Common Questions
-                        </div>
-                        <h2 className="font-display text-5xl md:text-6xl text-text-primary leading-tight">
-                            Got questions?<br />
-                            <span className="text-text-muted italic">We have answers.</span>
+                        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-text-primary leading-tight">
+                            Got questions?
                         </h2>
                         <p className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto">
                             Everything you need to know about our process, pricing, and how we work.
@@ -36,11 +55,17 @@ export default function FAQ() {
                     </div>
                 </RevealOnScroll>
 
-                <div className="space-y-4">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-10%" }}
+                    className="space-y-4"
+                >
                     {faqs.map((faq, index) => {
                         const isOpen = openIndex === index
                         return (
-                            <RevealOnScroll key={index} delay={index * 0.05}>
+                            <motion.div key={index} variants={itemVariants}>
                                 <div
                                     className={`group transition-all duration-500 rounded-2xl ${isOpen
                                         ? 'bg-bg-elevated/40 border border-accent/20'
@@ -49,8 +74,8 @@ export default function FAQ() {
                                 >
                                     <button
                                         onClick={() => toggleFAQ(index)}
-                                        className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none"
-                                        {...{ 'aria-expanded': isOpen }}
+                                        className="w-full flex items-center justify-between p-6 md:p-8 text-left focus:outline-none cursor-pointer"
+                                        aria-expanded={isOpen}
                                     >
                                         <h3 className={`text-lg md:text-xl font-display transition-colors duration-300 ${isOpen ? 'text-accent' : 'text-text-primary group-hover:text-accent/80'
                                             }`}>
@@ -77,18 +102,22 @@ export default function FAQ() {
                                         )}
                                     </AnimatePresence>
                                 </div>
-                            </RevealOnScroll>
+                            </motion.div>
                         )
                     })}
-                </div>
+                </motion.div>
 
-                <RevealOnScroll delay={0.4}>
-                    <div className="mt-16 text-center">
-                        <p className="text-text-muted text-sm">
-                            Still have questions? <a href="/book-a-call" className="text-accent border-b border-accent/20 hover:border-accent transition-colors font-medium">Book a call and we&apos;ll get back to you.</a>
-                        </p>
-                    </div>
-                </RevealOnScroll>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
+                    className="mt-16 text-center"
+                >
+                    <p className="text-text-muted text-sm">
+                        Still have questions? <a href="/book-a-call" className="text-accent border-b border-accent/20 hover:border-accent transition-colors font-medium">Book a call and we&apos;ll get back to you.</a>
+                    </p>
+                </motion.div>
             </div>
         </section>
     )

@@ -6,6 +6,29 @@ import { motion, AnimatePresence } from 'framer-motion'
 import RevealOnScroll from '../ui/RevealOnScroll'
 import { solutionCategories } from '@/lib/data'
 
+const containerVariants = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.15,
+        },
+    },
+}
+
+const rowVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.98 },
+    show: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.7,
+            ease: [0.16, 1, 0.3, 1] as const,
+        },
+    },
+}
+
 export default function Services() {
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
@@ -23,12 +46,18 @@ export default function Services() {
                     </div>
                 </RevealOnScroll>
 
-                <div className="border-t border-border">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-10%" }}
+                    className="border-t border-border"
+                >
                     {solutionCategories.map((solution, index) => {
                         const isExpanded = expandedIndex === index
 
                         return (
-                            <RevealOnScroll key={solution.id} delay={index * 0.05} y={20}>
+                            <motion.div key={solution.id} variants={rowVariants}>
                                 <div
                                     className={`group border-b border-border transition-all duration-300 ${isExpanded ? 'bg-bg-elevated/30 rounded-xl px-4 lg:px-6 -mx-4 lg:-mx-6' : ''}`}
                                     onMouseEnter={() => setExpandedIndex(index)}
@@ -50,7 +79,7 @@ export default function Services() {
                                         <div className="shrink-0 p-1 lg:p-2 cursor-pointer">
                                             <motion.div
                                                 animate={{ rotate: isExpanded ? 45 : 0 }}
-                                                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as const }}
+                                                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
                                                 className="w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-border flex items-center justify-center text-text-muted group-hover:border-accent group-hover:bg-accent/5 group-hover:text-accent transition-colors"
                                             >
                                                 <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +95,7 @@ export default function Services() {
                                                 initial={{ height: 0, opacity: 0 }}
                                                 animate={{ height: 'auto', opacity: 1 }}
                                                 exit={{ height: 0, opacity: 0 }}
-                                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
+                                                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
                                                 className="overflow-hidden"
                                             >
                                                 <div className="pb-8 lg:pb-12 pt-2 pl-0 lg:pl-26 flex flex-col lg:flex-row gap-6 lg:gap-12">
@@ -76,15 +105,26 @@ export default function Services() {
                                                         </p>
                                                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                                             {solution.capabilities.map((cap, i) => (
-                                                                <li key={i} className="flex items-center gap-2 text-sm text-text-secondary">
+                                                                <motion.li
+                                                                    key={i}
+                                                                    initial={{ opacity: 0, x: -10 }}
+                                                                    animate={{ opacity: 1, x: 0 }}
+                                                                    transition={{ duration: 0.4, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] as const }}
+                                                                    className="flex items-center gap-2 text-sm text-text-secondary"
+                                                                >
                                                                     <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                                                                     {cap}
-                                                                </li>
+                                                                </motion.li>
                                                             ))}
                                                         </ul>
                                                     </div>
                                                     <div className="hidden lg:block w-[280px] shrink-0">
-                                                        <div className="w-full h-40 rounded-lg overflow-hidden relative">
+                                                        <motion.div
+                                                            initial={{ opacity: 0, scale: 0.95 }}
+                                                            animate={{ opacity: 1, scale: 1 }}
+                                                            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] as const }}
+                                                            className="w-full h-40 rounded-lg overflow-hidden relative"
+                                                        >
                                                             <Image
                                                                 src={solution.image}
                                                                 alt={solution.title}
@@ -92,17 +132,17 @@ export default function Services() {
                                                                 className="object-cover"
                                                                 sizes="280px"
                                                             />
-                                                        </div>
+                                                        </motion.div>
                                                     </div>
                                                 </div>
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
                                 </div>
-                            </RevealOnScroll>
+                            </motion.div>
                         )
                     })}
-                </div>
+                </motion.div>
             </div>
         </section>
     )
