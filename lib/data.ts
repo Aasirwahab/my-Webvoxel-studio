@@ -481,5 +481,50 @@ export const faqs = [
     {
         question: "What happens after the system goes live?",
         answer: "We provide ongoing support and optimisation. As your business grows, we refine and extend the system to match new requirements. We also offer maintenance retainers for businesses that want continuous improvement."
+
+    }
+];
+
+// --- Homepage: What We Build (Unified) ---
+export const whatWeBuildSystems = [
+    {
+        title: "AI Reception & Enquiry Handling",
+        shortDesc: "Automate lead capture and routing with intelligent front-line systems.",
+        iconName: "Bot"
+    },
+    {
+        title: "Inbound Sales & Follow-up",
+        shortDesc: "Respond faster and maintain consistent follow-up across channels.",
+        iconName: "TrendingUp"
+    },
+    {
+        title: "Internal Dashboards & Portals",
+        shortDesc: "Custom built views for team operations and direct client access.",
+        iconName: "LayoutDashboard"
+    },
+    {
+        title: "Scheduling & Booking",
+        shortDesc: "Automated booking workflows to reduce manual administrative tasks.",
+        iconName: "CalendarCheck"
+    },
+    {
+        title: "Custom Web Applications",
+        shortDesc: "Tailored software built fundamentally around your unique business model.",
+        iconName: "Globe"
+    },
+    {
+        title: "Reporting & Automation",
+        shortDesc: "Eliminate spreadsheet-heavy workflows with connected digital systems.",
+        iconName: "BarChart3"
+    },
+    {
+        title: "Ecommerce & POS Systems",
+        shortDesc: "Scalable digital retail and point-of-sale systems for modern commerce.",
+        iconName: "ShoppingCart"
+    },
+    {
+        title: "API & Cloud Integrations",
+        shortDesc: "Seamlessly connected workflows connecting across your existing tech stack.",
+        iconName: "Zap"
     }
 ];

@@ -8,8 +8,7 @@ import FeaturedWork from '@/components/sections/FeaturedWork'
 import Stats from '@/components/sections/Stats'
 import Testimonials from '@/components/sections/Testimonials'
 import WhyWebVoxel from '@/components/sections/WhyWebVoxel'
-import ExampleSystems from '@/components/sections/ExampleSystems'
-import AdditionalCapabilities from '@/components/sections/AdditionalCapabilities'
+import WhatWeBuild from '@/components/sections/WhatWeBuild'
 import FAQ from '@/components/sections/FAQ'
 import CTA from '@/components/sections/CTA'
 import JsonLd, { localBusinessSchema, websiteSchema } from '@/components/seo/JsonLd'
@@ -29,8 +28,7 @@ export default function Home() {
             <Stats />
             <Testimonials />
             <WhyWebVoxel />
-            <ExampleSystems />
-            <AdditionalCapabilities />
+            <WhatWeBuild />
             <FAQ />
             <CTA />
         </>
